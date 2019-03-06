@@ -2,22 +2,17 @@ package principal;
 
 public class Programa {
 	public static void main(String[] args) {
-		//local, son primtivas o tambn pueden ser apuntadores
-		//static
-		//instance, es un apuntador
-		//las constants
-		//presedencia de operadores
-		//1. () 2. ++, --, 3. */% 4. +-
-		int r = (100 + 50) / 2 - 5 * 3;
-		// 150 / 2 -5 * 3
-		// 150 / 2 - 15
-		// 150 / -13
-		//-11
-		//
-		//100 + 25 - 5 * 3
-		//100 + 25 - 15
-		//125 - 15
-		//110
+		int i = 100;
+		int j = 200;
+		int r = 100 - 20 / 2 + i++ * 2 - ++j;
+		//100 - 20 / 2 + (100) * 2 - (201)  ... i=101,j=201
+		//100 - 10 + 100 * 2 - 201
+		//100 - 10 + 200 - 201
+		//90 + 200 - 201
+		//290 - 201
+		//89
 		System.out.println(r);
+		System.out.println(i);
+		System.out.println(j);
 	}
 }
