@@ -1,8 +1,7 @@
 package principal;
 
 public class Programa {
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
 		//[2][3][2]
 		int[][][] n1 = {
 				{

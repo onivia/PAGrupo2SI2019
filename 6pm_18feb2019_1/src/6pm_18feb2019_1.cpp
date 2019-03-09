@@ -9,20 +9,28 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	int *p = NULL;
+struct Punto {
+	int x; //4B
+	int y; //4B
+};
 
-	p = (int *) malloc(1*sizeof(int));
-	*p = 30; //p[0]=30;
-	p = (int *) realloc(p,2);
-	*(p+1) = 50;  //p[1]=50;
+int main() {
+	Punto *puntos = NULL;
+	puntos = (Punto *) malloc(2*sizeof(Punto));
+
+	puntos[0].x = 10;
+	puntos[0].y = 20;
+
+	puntos[1].x = 50;
+	puntos[1].y = 60;
 
 	for (int i = 0; i < 2; ++i) {
-		cout<<p[i]<<endl;
+		cout<<puntos[i].x<<endl;
+		cout<<puntos[i].y<<endl;
 	}
 
-	free(p);
-	p = NULL;
+	free(puntos);
+	puntos=NULL;
 
 	return 0;
 }
