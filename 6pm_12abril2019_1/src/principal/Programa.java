@@ -2,15 +2,23 @@ package principal;
 
 public class Programa {
 	public static void main(String[] args) {
-		String s1 = "100";
-		String s2 = String.valueOf(100);
-		String s3 = new String("100");
-		String s4 = "100";
-		String s5 = new String("100");
+		String s1 = new String("100");
+		String s2 = s1;
+		s2 = "200";
+		s1 = new String("300");
+//		System.out.println(s1);
+//		System.out.println(s2);
 		
-		if(s3.equals(s5))
-			System.out.println("son iguales");
-		else
-			System.out.println("NO son iguales!");
+		Integer i1 = new Integer(100);
+		Integer i2 = i1;
+		i1 = new Integer(200);
+//		System.out.println(i1);
+//		System.out.println(i2);
+		
+		Estudiante e1 = new Estudiante(100, "yo100", "A");
+		Estudiante e2 = e1;
+		e1.nombre = "el100";
+		System.out.println(e1);
+		System.out.println(e2);
 	}
 }
