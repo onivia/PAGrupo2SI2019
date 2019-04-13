@@ -1,24 +1,18 @@
 package principal;
 
 public class Programa {
-	public static void main(String[] args) {
-		String s1 = new String("100");
-		String s2 = s1;
-		s2 = "200";
-		s1 = new String("300");
-//		System.out.println(s1);
-//		System.out.println(s2);
-		
-		Integer i1 = new Integer(100);
-		Integer i2 = i1;
-		i1 = new Integer(200);
-//		System.out.println(i1);
-//		System.out.println(i2);
-		
+	public static void main(String[] args) {			
 		Estudiante e1 = new Estudiante(100, "yo100", "A");
-		Estudiante e2 = e1;
-		e1.nombre = "el100";
-		System.out.println(e1);
-		System.out.println(e2);
+		m1(e1);
+		System.out.println("despues de llamar a m1 - " + e1);
+	}
+	
+	public static void m1(final Estudiante e) {
+		System.out.println("entro a m1 (1) - " + e);
+//		e.codigo = 600;
+//		System.out.println("entro a m1 (2) - " + e);
+		//e = new Estudiante(200, "yo200", "B");
+		e.codigo = 500;		
+		System.out.println("entro a m1 (3) - " + e);
 	}
 }
