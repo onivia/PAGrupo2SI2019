@@ -80,9 +80,10 @@ public class MiLista {
 		if(!estaVacia()) {
 			nodo = new Nodo();
 			if(tamano==1) {
-				nodo.dato = p.dato;				
+				nodo.nodoDato = p.nodoDato;
+				p = u = null;
 			} else {				
-				nodo.dato = p.dato;
+				nodo.nodoDato = p.nodoDato;
 				nodoAux = p;
 				p = p.sgte;
 				nodoAux.sgte = null;
@@ -107,7 +108,7 @@ public class MiLista {
 		if(!estaVacia()) {
 			nodoAux = p;
 			for(int i=0;i<tamano;i++) {
-				System.out.println(nodoAux.dato);
+				System.out.println(nodoAux.nodoDato.dato);
 				nodoAux = nodoAux.sgte;			
 			}
 		}

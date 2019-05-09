@@ -42,7 +42,7 @@ public class MiArbolBinarioBusqueda {
 		}
 	}
 
-	public void recorrerAmplitud() {
+	public void recorrerAmplitud() throws Exception {
 		/* 
 		 * 1. Encolar a raiz
 		 * 2. En un ciclo siempre y cuando haya algo encolado:
@@ -52,18 +52,23 @@ public class MiArbolBinarioBusqueda {
 		 * 6.	si tiene hijo por dere, encolo a este hijo(dere) 
 		 */
 		NodoArbol NodoArbolAux = null;
-		Queue<NodoArbol> cola = null;
+		//Queue<NodoArbol> cola = null;
+		Cola cola = null;
 		
 		if(raiz!=null) {
-			cola = new LinkedList<NodoArbol>();
-			cola.add(raiz);
-			while(!cola.isEmpty()) {
-				NodoArbolAux = cola.poll();
+			//cola = new LinkedList<NodoArbol>();
+			//cola.add(raiz);
+			cola = new Cola();
+			cola.encolar(raiz);
+			while(!cola.estaVacia()) {
+				//NodoArbolAux = cola.poll();
+				NodoArbolAux = cola.desencolar();
 				System.out.println(NodoArbolAux.dato);
 				if(NodoArbolAux.izq!=null)
-					cola.add(NodoArbolAux.izq);
+					//cola.add(NodoArbolAux.izq);
+					cola.encolar(NodoArbolAux.izq);
 				if(NodoArbolAux.dere!=null)
-					cola.add(NodoArbolAux.dere);
+					cola.encolar(NodoArbolAux.dere);
 			}
 		}
 	}
