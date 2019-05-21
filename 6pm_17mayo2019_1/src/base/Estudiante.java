@@ -10,6 +10,12 @@ public class Estudiante {
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
+	
+	public Estudiante(int codigo) {
+		this.codigo = codigo;
+		this.nombre = "";
+		this.direccion = "";
+	}
 
 	@Override
 	public String toString() {

@@ -3,10 +3,12 @@ package base;
 public class MiTecnicaHash {
 	private int T;
 	public Nodo[] nodos;
+	private int cantMaxCifras;
 
 	public MiTecnicaHash(int T) {
 		this.T = T;
 		this.nodos = new Nodo[T + 10];
+		this.cantMaxCifras = 5;
 	}
 	
 	public Estudiante obtener(int codigoEstudiante) {
@@ -22,8 +24,32 @@ public class MiTecnicaHash {
 		 * 9.	se asigna en un objeto Estudiante el dato obtenido en el objeto nodo
 		 * 10. Se retorna el objeto Estudiante
 		 */
+		Nodo nodo = null;
+		Nodo nodoAux = null;
+		Estudiante est = null;
+		int I = 0;
+		int kT = 0;
 		
-		return null; //OJO!m aqui retornan la instancia de tipo Estudiante
+		nodo = new Nodo(new Estudiante(codigoEstudiante));
+		kT = obtenerKt(String.valueOf(codigoEstudiante), cantMaxCifras);
+		I = obtenerILineal(kT);
+		nodoAux = esNodo(nodo, I);
+		if(nodoAux!=null) {
+			est = nodoAux.dato;			
+		} else {
+			I = obtenerICuadratico(I);
+			nodoAux = esNodo(nodo, I);
+			if(nodoAux!=null) {
+				est = nodoAux.dato;			
+			} else {
+				nodoAux = exploracionSecuencial(nodo, I);
+				if(nodoAux!=null) {
+					est = nodoAux.dato;			
+				}
+			}
+		}
+		
+		return est; //OJO! aqui retornan la instancia de tipo Estudiante
 	}
 	
 	public int insertar(Estudiante est) {
@@ -41,7 +67,7 @@ public class MiTecnicaHash {
 		int posi = 0;
 		
 		//1.
-		kT = obtenerKt(String.valueOf(est.codigo), 2);
+		kT = obtenerKt(String.valueOf(est.codigo), cantMaxCifras);
 		
 		//2.
 		I = obtenerILineal(kT);
@@ -117,6 +143,7 @@ public class MiTecnicaHash {
 				nodos[i]= nodo;
 				fueInsertado = true;
 				posiInsercion = i;
+				break;
 			}
 		}
 		if(posi > 0 && !fueInsertado) {
@@ -125,6 +152,7 @@ public class MiTecnicaHash {
 					nodos[i]= nodo;
 					fueInsertado = true;
 					posiInsercion = i;
+					break;
 				}
 			}			
 		}
@@ -156,7 +184,8 @@ public class MiTecnicaHash {
 		String kT = "";
 		
 		kT = String.valueOf(keyOriginal.hashCode());
-		kT = kT.substring(kT.length() - cantMaxCifras);
+		if(kT.length() >= cantMaxCifras)
+			kT = kT.substring(kT.length() - cantMaxCifras);
 		
 		return (Integer.parseInt(kT));
 	}

@@ -9,7 +9,7 @@ import base.MiTecnicaHash;
 public class Programa {
 
 	public static void main(String[] args) throws InterruptedException {
-		int maxEntradas = 100000;
+		int maxEntradas = 1000000;
 		MiTecnicaHash hash = null;
 		int codigoEstudiante = 0;
 		LocalDateTime d1 = null;
@@ -20,19 +20,20 @@ public class Programa {
 		d1 = LocalDateTime.now();
 		for (int i = 0; i < maxEntradas; i++) {
 			hash.insertar(new Estudiante(i, "pepita" + (i+1), "lejos" + (i+1)));			
-		}		
-		//Thread.currentThread().sleep(500);
+		}
+		
 		d2 = LocalDateTime.now();
 		System.out.println(ChronoUnit.MILLIS.between(d1, d2) + "MiliSegs insertando (" + maxEntradas + ") entradas!.");
 		
-		codigoEstudiante = 100;
+		codigoEstudiante = 10000;
 		d1 = LocalDateTime.now();
 		est = hash.obtener(codigoEstudiante);
+		//Thread.currentThread().sleep(500);
 		d2 = LocalDateTime.now();
 		if(est!=null)
 			System.out.println(est);
 		else
 			System.out.println("Estudiante (" + codigoEstudiante + ") NO fue encontrado!.");
-		System.out.println(ChronoUnit.MILLIS.between(d1, d2) + "MiliSegs obteniendo el estudiante (" + codigoEstudiante + ").");
+		System.out.println(ChronoUnit.NANOS.between(d1, d2) + "NanoSegs obteniendo el estudiante (" + codigoEstudiante + ").");
 	}
 }
