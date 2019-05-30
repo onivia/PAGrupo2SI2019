@@ -5,14 +5,22 @@ public class Cola extends MiLista {
 		super();
 	}
 	
-	public void encolar(int dato) {						
+	public void encolar(int dato) throws Exception {
+		Nodo nodo = null;
+		
+		nodo = new Nodo(dato);
+		super.adicionar(nodo);
 	}
 	
 	public int desencolar() {
-		return 0;
+		Nodo nodo = null;
+		
+		nodo = super.obteneryRemoverPrimero();
+				
+		return ((nodo!=null) ? nodo.dato : -1);
 	}
 	
 	public void mostrarCola() {
-		
+		super.mostrarLista();		
 	}
 }

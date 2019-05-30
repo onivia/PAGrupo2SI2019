@@ -6,14 +6,22 @@ public class Pila extends MiLista {
 		super();
 	}
 	
-	public void apilar(int dato) {		
+	public void apilar(int dato) throws Exception {
+		Nodo nodo = null;
+		
+		nodo = new Nodo(dato);
+		super.insertarPrimero(nodo);
 	}
 	
 	public int desapilar() {
-		return 0;
+		Nodo nodo = null;
+		
+		nodo = super.obteneryRemoverPrimero();
+				
+		return ((nodo!=null) ? nodo.dato : -1);
 	}
 	
 	public void mostarPila() {
-		
+		super.mostrarLista();		
 	}
 }
